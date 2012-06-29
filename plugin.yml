@@ -1,0 +1,5 @@
+name: Reputation
+version: 0.1-SNAPSHOT
+main: com.precipicegames.lachy2901.reputation.Reputation
+author: lachy2901
+description: A plugin for managing reputation.
