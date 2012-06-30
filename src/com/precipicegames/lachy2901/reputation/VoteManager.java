@@ -10,23 +10,22 @@ public class VoteManager {
 	String owner;
 	Rank rank;
 	HashMap<Rank, Integer> score = new HashMap<Rank, Integer>();
-	ArrayList<String> voters = new ArrayList<String>();
+	HashMap<String, Vote> voters = new HashMap<String, Vote>();
 	
 	public VoteManager(Player p) {
 		owner = p.getName();
 		rank = Utils.getRank(p);
-		
 	}
 	
-	public void vote(boolean up, Player who) {
+	public void vote(Vote v, Player who) {
 		checkRank();
-		if (!voters.contains(who.getName())) {
-			if (up) {
+		if (!voters.containsKey(who.getName())) {
+			if (v == Vote.UP) {
 				score.put(Utils.getRank(who), score.get(Utils.getRank(who)) + 1);
 			} else {
 				score.put(Utils.getRank(who), score.get(Utils.getRank(who)) - 1);
 			}
-			voters.add(who.getName());
+			voters.put(who.getName(), v);
 		}
 	}
 	
